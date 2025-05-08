@@ -1,7 +1,7 @@
 ---
 exclude_paths:
   - .github/  # Exclude linter config
-  - 
+  -
 name: Ansible Lint
 
 on:
