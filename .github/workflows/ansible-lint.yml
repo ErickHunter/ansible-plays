@@ -1,4 +1,7 @@
 ---
+exclude_paths:
+  - .github/  # Exclude linter config
+  - 
 name: Ansible Lint
 
 on:
@@ -14,6 +17,3 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run ansible-lint
         uses: ansible/ansible-lint-action@main
-
-exclude_paths:
-  - .github/  # Exclude linter config
