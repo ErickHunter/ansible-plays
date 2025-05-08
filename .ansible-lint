@@ -2,3 +2,4 @@
 exclude_paths:
   - .github/    # Exclude directory containing workflow
   - README.md   # Exclude directory containing readme
+  
