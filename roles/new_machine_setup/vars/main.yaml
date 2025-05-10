@@ -1,0 +1,8 @@
+---
+users:
+  -
+    name: erick
+    key: https://github.com/erickhunter.keys
+  -
+    name: ubuntu
+    key: https://github.com/erickhunter.keys

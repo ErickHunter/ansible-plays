@@ -1,0 +1,9 @@
+---
+- name: Setup New Machine
+  hosts: all
+  roles:
+    - init
+    - new_machine_setup
+  tags:
+    - init
+    - new_machine_setup
