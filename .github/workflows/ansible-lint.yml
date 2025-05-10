@@ -14,9 +14,12 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
+      - name: Create dummy vault password file for CI
+        run: |
+          mkdir -p /github/home/.ansible
+          echo "ci_dummy_placeholder_password" > /github/home/.ansible/vault_password
+          chmod 600 /github/home/.ansible/vault_password
+          
       - name: Run ansible-lint
         uses: ansible/ansible-lint-action@v6
-        env:
-          ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
-        #  args: "-v"  use this to make verbose
-# lint file is .ansible-lint
+
