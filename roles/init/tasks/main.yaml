@@ -3,22 +3,8 @@
   ansible.builtin.apt:
     cache_valid_time: 86400
 
-# this is done with init-new-machine now
-#- name: Create user(s)
-#  user:
-#    name: "{{ item.name }}"
-#  loop: "{{ users }}"
-
-#- name: Set authorized keys
-#  ansible.posix.authorized_key:
-#    user: "{{ item.name }}"
-#    state: present
-#    key: "{{ item.key }}"
-#    validate_certs: False
-#  loop: "{{ users }}"
-
 - name: Set "cron" state "started" and enabled "yes"
-  service:
+  ansible.builtin.service:
     name: cron
     state: started
-    enabled: yes  
+    enabled: true
