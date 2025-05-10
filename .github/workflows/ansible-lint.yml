@@ -14,12 +14,12 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Create dummy vault password file for ansible-lint
+      - name: Create CI-specific vault password file in workspace
         run: |
-          # Use the runner's actual HOME environment variable
-          mkdir -p "${HOME}/.ansible"
-          echo "ci_dummy_placeholder_password" > "${HOME}/.ansible/vault_password"
-          chmod 600 "${HOME}/.ansible/vault_password"
+          echo "ci_dummy_placeholder_password" > ${{ github.workspace }}/.ansible_vault_password_for_ci
+          chmod 600 ${{ github.workspace }}/.ansible_vault_password_for_ci
 
       - name: Run ansible-lint
         uses: ansible/ansible-lint-action@v6
+        env:
+          ANSIBLE_VAULT_PASSWORD_FILE: ${{ github.workspace }}/.ansible_vault_password_for_ci
